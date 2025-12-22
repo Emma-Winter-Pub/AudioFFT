@@ -140,7 +140,7 @@ AudioFFT decodes the entire audio stream into memory (`float` PCM format) to ens
 
 3. **Build:**
     ```x64 Native Tools Command Prompt for VS 2022
-    cmake --build build --config Release
+    cmake --build . --config Release
     ```
 
 
@@ -167,3 +167,4 @@ This software relies on the following excellent open-source projects:
 
 
 *Developed with ❤️ by Emma Winter.*
+

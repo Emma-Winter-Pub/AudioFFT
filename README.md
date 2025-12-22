@@ -128,6 +128,7 @@ AudioFFT decodes the entire audio stream into memory (`float` PCM format) to ens
 
 **Steps:**
 1.  **Download the AudioFFT Source code:**
+
     Download the AudioFFT source code from GitHub.
 
 2.  **Configure using CMake and vcpkg:**
@@ -137,7 +138,15 @@ AudioFFT decodes the entire audio stream into memory (`float` PCM format) to ens
     cmake .. -DCMAKE_TOOLCHAIN_FILE=[path_to_vcpkg]\scripts\buildsystems\vcpkg.cmake -DCMAKE_PREFIX_PATH=[path_to_Qt]\Qt\6.9.2\msvc2022_64
     ```
 
-3.  **Deploy:**
+3. **Build:**
+    ```x64 Native Tools Command Prompt for VS 2022
+    cmake --build build --config Release
+    ```
+
+
+
+4.  **Deploy:**
+
     The executable will be in `build/Release`. You may need to run `windeployqt` or manually copy the required DLLs to run the application outside the IDE.
     ```x64 Native Tools Command Prompt for VS 2022
     [path_to_Qt]\Qt\6.9.2\msvc2022_64\bin\windeployqt.exe C:\[path_to_AudioFFT]\build\Release\AudioFFT.exe
@@ -155,5 +164,6 @@ This software relies on the following excellent open-source projects:
 *   **[FFmpeg](https://ffmpeg.org/)**: Audio decoding and stream handling (LGPLv2.1+).
 *   **[FFTW3](http://www.fftw.org/)**: Fastest Fourier Transform in the West (GPLv2+).
 *   **Image Libraries**: `libpng` (PNG Reference Library), `libjpeg-turbo`, `libtiff`, `OpenJPEG`, `libwebp`, `libavif`.
+
 
 *Developed with ❤️ by Emma Winter.*

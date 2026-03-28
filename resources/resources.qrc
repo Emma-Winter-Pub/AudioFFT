@@ -1,0 +1,49 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+    <file alias="AudioFFT_logo.ico">AudioFFT_logo.ico</file>
+
+    <file>shaders/overlay.vert</file>
+    <file>shaders/overlay.frag</file>
+
+    <file>text/de_Intro.md</file>
+    <file>text/de_UserManual.md</file>
+    <file>text/de_Changelog.md</file>
+    <file>text/de_Copyright.md</file>
+
+    <file>text/en_Intro.md</file>
+    <file>text/en_UserManual.md</file>
+    <file>text/en_Changelog.md</file>
+    <file>text/en_Copyright.md</file>
+
+    <file>text/fr_Intro.md</file>
+    <file>text/fr_UserManual.md</file>
+    <file>text/fr_Changelog.md</file>
+    <file>text/fr_Copyright.md</file>
+
+    <file>text/ja_Intro.md</file>
+    <file>text/ja_UserManual.md</file>
+    <file>text/ja_Changelog.md</file>
+    <file>text/ja_Copyright.md</file>
+
+    <file>text/ko_Intro.md</file>
+    <file>text/ko_UserManual.md</file>
+    <file>text/ko_Changelog.md</file>
+    <file>text/ko_Copyright.md</file>
+
+    <file>text/ru_Intro.md</file>
+    <file>text/ru_UserManual.md</file>
+    <file>text/ru_Changelog.md</file>
+    <file>text/ru_Copyright.md</file>
+
+    <file>text/zh-JT_Intro.md</file>
+    <file>text/zh-JT_UserManual.md</file>
+    <file>text/zh-JT_Changelog.md</file>
+    <file>text/zh-JT_Copyright.md</file>
+
+    <file>text/zh-FT_Intro.md</file>
+    <file>text/zh-FT_UserManual.md</file>
+    <file>text/zh-FT_Changelog.md</file>
+    <file>text/zh-FT_Copyright.md</file>
+
+</qresource>
+</RCC>

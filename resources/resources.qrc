@@ -1,9 +1,0 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource prefix="/">
-    <file alias="AudioFFT_logo.ico">AudioFFT_logo.ico</file>
-    <file>text/Intro_EN.md</file>
-    <file>text/UserManual_EN.md</file>
-    <file>text/Changelog_EN.md</file>
-    <file>text/Copyright_EN.md</file>
-</qresource>
-</RCC>

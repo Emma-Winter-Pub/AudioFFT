@@ -1,44 +1,37 @@
 # AudioFFT
 
-![Version](https://img.shields.io/badge/version-1.0-blue)
+![Version](https://img.shields.io/badge/version-1.1-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows_x64-lightgrey)
-![License](https://img.shields.io/badge/license-GPLv3-green)
+![License](https://img.shields.io/badge/license-LGPLv3-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-**AudioFFT** is a high-performance, open-source audio spectrum analysis tool. It converts audio files into high-resolution visual spectrograms, supporting both interactive single-file analysis and massive automated batch processing.
+**AudioFFT** is an audio spectrum viewing and exporting tool that converts files containing audio streams into high-quality visualized spectrograms.
 
-Built with **C++17**, **Qt 6**, **FFmpeg**, and **FFTW3**.
+Built with **Qt 6**, **FFmpeg**, and **FFTW3**, AudioFFT delivers lightning-fast parallel decoding, extreme precision, and a fluid interactive interface.
 
-![Screenshot](screenshot.jpg)
+![Screenshot](Screenshot/01.png)
+![Screenshot](Screenshot/02.png)
+![Screenshot](Screenshot/03.png)
+![Screenshot](Screenshot/04.png)
+![Screenshot](Screenshot/05.png)
+![Screenshot](Screenshot/06.png)
+![Screenshot](Screenshot/07.png)
+![Screenshot](Screenshot/08.png)
+![Screenshot](Screenshot/09.png)
 
 ---
 
 ## Table of Contents
-1.  [Features](#features)
-2.  [Download & Installation](#download--installation)
-3.  [User Manual](#user-manual)
-    *   [Single File Mode](#single-file-mode)
-    *   [Batch Processing Mode](#batch-processing-mode)
-    *   [Configuration Parameters](#configuration-parameters)
-4.  [Important Notes & Troubleshooting](#important-notes--troubleshooting)
-5.  [Build from Source](#build-from-source)
-6.  [Credits & License](#credits--license)
 
----
-
-## Features
-
-*   **Broad Format Support**: Powered by **FFmpeg**, supports MP3, FLAC, WAV, APE, AAC, OGG, M4A, DSD, and more.
-*   **High-Precision FFT**: Uses **FFTW3** with Hann windowing for accurate frequency analysis and decibel (dB) calculation.
-*   **Dual Operation Modes**:
-    *   **Single Mode**: Interactive viewer with real-time zooming, panning, and grid overlays.
-    *   **Batch Mode**: Multi-threaded engine with load balancing to process thousands of files automatically.
-*   **Professional Export**:
-    *   Direct integration with `libpng`, `libjpeg-turbo`, `libwebp`, and `libavif` for optimal compression.
-    *   Supports exporting up to **10,000px** width (or unlimited if hardware allows).
-*   **Customizable Visualization**: 
-    *   13 different **Mapping Curves** (Linear, Logarithmic, Sinusoidal, Cubic, etc.) to adjust frequency distribution.
-    *   Adjustable time precision (up to 0.01s).
+- [Features](#features)
+- [Download & Installation](#download--installation)
+- [User Manual](#user-manual)
+  - [Workspace](#workspace)
+  - [Single File Analysis](#single-file-analysis)
+  - [Batch Processing](#batch-processing)
+- [Changelog](#changelog)
+- [Build from Source](#build-from-source)
+- [Third-Party Assets & Licenses](#third-party-assets--licenses)
 
 ---
 
@@ -46,71 +39,121 @@ Built with **C++17**, **Qt 6**, **FFmpeg**, and **FFTW3**.
 
 ### For Windows Users
 1.  Navigate to the **[Releases](../../releases)** page on the right side of this repository.
-2.  Download the latest `AudioFFT_v1.0_Win-x64.zip`.
+2.  Download the latest `AudioFFT_v1.1_Win-x64.zip`.
 3.  Extract the ZIP file to any folder.
 4.  Run `AudioFFT.exe`. No installation is required(If it fails to start (or reports missing DLLs), please install the **Microsoft Visual C++ Redistributable (`vc_redist.x64.exe`)**).
 
 ---
 
-## User Manual
+## Features
 
-### Single File Mode
-Designed for detailed inspection of individual audio tracks.
-
-1.  **Load Audio**: Drag and drop an audio file into the window or click the **"Open"** button.
-2.  **Navigation**:
-    *   **Pan**: Click and drag the spectrogram to move around.
-    *   **Zoom**: Use the mouse wheel to zoom in/out on the time axis.
-    *   **Vertical Zoom**: Check the **"Zoom Hz"** box to enable simultaneous frequency axis zooming.
-3.  **Export**: Configure your desired height and precision, then click **"Save"**.
-
-### Batch Processing Mode
-Designed for converting entire music libraries into images.
-
-1.  **Select Paths**:
-    *   **Input Path**: Select the folder containing your audio files.
-    *   **Output Path**: Select where you want the images to be saved.
-    *   *Option*: Check **"Scan Subfolders"** to process recursively.
-    *   *Option*: Check **"Keep Structure"** to mirror the folder hierarchy in the output.
-2.  **Output Settings**:
-    *   Select the image format (e.g., PNG, JPG, WebP, AVIF).
-    *   Adjust compression/quality sliders (if applicable).
-3.  **Start**: Click **"Start Task"**. The log window will show the progress of each thread.
-
-### Configuration Parameters
-
-These settings apply to both modes:
-
-*   **Height**: The vertical resolution of the generated image (e.g., 1025px, 4097px). Higher values show more frequency detail but consume more RAM.
-*   **Time Precision**: The time interval between FFT columns (e.g., 0.1s, 0.01s).
-    *   *0.1s*: Standard detail, faster processing.
-    *   *0.01s*: Extreme detail, generates very wide images, requires significant RAM.
-*   **Width Limit**:
-    *   If checked, images wider than the set value (e.g., 1000px) will be downscaled to fit. Useful for creating thumbnails.
-*   **Mapping Function** (Top Toolbar):
-    *   Controls how frequencies are distributed on the Y-axis.
-    *   *01 Linear*: Even spacing (standard).
-    *   *02/03 Log*: Expands low frequencies (bass) and compresses high frequencies. Recommended for music analysis.
+*   Supports multiple audio formats.
+*   Interactive spectrogram viewer.
+*   Supports parameter adjustment.
+*   Supports multiple image formats.
+*   Supports batch processing.
 
 ---
 
-## Important Notes & Troubleshooting
+## User Manual
 
-### 1. Memory Usage Warning (OOM)
-AudioFFT decodes the entire audio stream into memory (`float` PCM format) to ensure maximum processing speed. 
-*   **Risk**: Processing extremely long audio files (e.g., >1 hour at 192kHz) combined with high settings (e.g., `0.01s` precision) can exhaust your system RAM (Out of Memory).
-*   **Solution**: If the application crashes on a specific file, try increasing the "Time Precision" value (e.g., from 0.05 to 0.1) or reducing the "Height".
+### Workspace
 
-### 2. APE Format Specifics
-*   **Single Mode**: Uses a special **parallel decoding** strategy to speed up loading. This result in tiny visible "stitching seams" (artifacts) .
-*   **Batch Mode**: Uses **single-threaded decoding** for APE files. This ensures absolute safety and perfect waveform continuity, though it may be slightly slower per file.
+*   **Full Load**: Loads the entire audio file into memory for the fastest processing speed, suitable for analyzing regular-sized files.
+*   **Streaming**: Reads, processes, and renders in chunks with extremely low memory usage, ideal for super-long audio files or computers with limited resources.
+*   **Batch**: Generates spectrograms in batches, with built-in Full Load and Streaming dual modes.
 
-### 3. Image Export Limits
-*   **PNG**: If the generated image exceeds ~24 million pixels, a warning may appear as saving will take time.
-*   **JPG**: Has a hard limit of 65,535 pixels per side.
-*   **WebP**: Has a hard limit of 16,383 pixels per side.
-*   **AVIF**: Has a hard limit of 8,192 pixels per side.
-*   *Note*: If your generated spectrogram exceeds these format limits, the software will attempt to downscale it automatically or fail gracefully.
+### Single File Analysis
+
+#### View and Display Controls
+*   **Log**: Opens an independent log window to display file information and processing progress in real-time.
+*   **Grid**: Overlays frequency and time grid lines on the spectrogram to assist with alignment and reading.
+*   **Labels**: Enables peripheral information (axes, title, etc.) around the spectrogram.
+*   **ZoomHz (Zoom Frequency)**: Unlocks frequency axis zooming.
+*   **MaxW (Max Width)**: Limits the maximum pixel width of the exported image. It will be auto-resized when exceeding the width limit.
+
+#### Audio and Image Parameters
+*   **Stream/Track**: Switches the audio stream in multi-stream files; if a `.cue` file is loaded, it becomes **Track** (CUE Track).
+*   **Ch (Channel)**: Selects a specific channel, or choose "Mix" to mix all channels.
+*   **H (Height)**: Sets the vertical pixel height of the image.
+*   **Prec (Precision)**: Sets the horizontal time resolution (seconds/pixel). When set to "Auto", the window overlap rate is 0%.
+*   **Win (Window)**: Selects the window function for the Fourier transform to control spectral leakage and sidelobe attenuation.
+*   **Map (Mapping)**: Selects the scaling curve for the frequency axis (Y-axis) to easily focus on specific frequency bands.
+*   **Pal (Palette)**: Selects the color theme for the spectral energy.
+*   **dB**: Sets the upper and lower limits (dB) of the mapped energy.
+*   **Open**: Opens files containing audio streams as well as CUE files.
+*   **Save**: Exports the spectrogram as an image, with customizable compression level and image quality.
+
+### Batch Processing
+
+*   **Input/Output Path**: Sets the source folder and destination folder.
+*   **Settings**: Opens the batch task configuration center. You can specify the **Mode** (Full Load / Streaming), **Threads**, FFT parameters, image export format, image quality, and other options.
+*   **Task Control**: Controls the task via **Start Task**, **Pause Task / Resume Task**, and **Stop Task** buttons.
+
+---
+
+## Changelog
+
+### V1.1 (2026-03-28)
+
+**New**
+*   Added streaming processing.
+*   Added multi-threaded decoding for FLAC, ALAC, and DSD formats.
+*   Added adaptive 32/64-bit floating-point computation precision.
+*   Added dynamic memory loading strategy for full mode.
+*   Added track switching.
+*   Added support for opening CUE files.
+*   Added CUE split-track switching.
+*   Added channel switching.
+*   Added FFT window function selection.
+*   Added spectrogram color scheme selection.
+*   Added spectrogram dB value adjustment.
+*   Added caching mechanism for Fourier transform computation results.
+*   Added duplicate task reminder for batch processing.
+*   Added player with latency compensation.
+*   Added adjustable crosshair cursor.
+*   Added probe with switchable data source.
+*   Added frequency distribution graph display.
+*   Added GPU hardware acceleration.
+*   Added component show/hide control.
+*   Added frame rate adjustment.
+*   Added I/O scheduling for batch processing.
+*   Added screenshot functionality.
+*   Added settings panel.
+*   Added user configuration saving.
+*   Added multi-language support: Simplified Chinese, Traditional Chinese, Japanese, Korean, German, English, French, and Russian.
+*   Expanded the range of height values and added original FFT point-to-point resolution values.
+*   Expanded the range of time precision values and added automatic zero-overlap rate.
+*   Expanded the number of mapping functions.
+
+**Optimizations**
+*   Optimized audio decoding speed.
+*   Optimized Fourier transform speed.
+*   Optimized spectrogram rendering speed.
+*   Optimized log content and layout.
+*   Optimized the logic and smoothness of spectrogram zooming and panning.
+*   Changed the user interface to Ribbon style.
+
+**Fixes**
+*   Fixed errors in multi-threaded decoding for APE format.
+*   Fixed inaccurate audio duration display for some files.
+*   Fixed FFmpeg resource leaks.
+*   Fixed program crashes caused by thread contention.
+*   Fixed program crashes caused by Fourier transform during batch processing.
+*   Fixed save failures in batch processing when image size exceeded format limits.
+
+### V1.0 (2025-12-21)
+
+*   Supports two working modes: single-file and batch processing.
+*   Supports the vast majority of common audio formats.
+*   Spectrogram supports panning and zooming.
+*   Preset multiple frequency mapping functions.
+*   Spectrogram height and time precision can be adjusted.
+*   Provides grid for easy alignment and viewing.
+*   Supports exporting to multiple image formats.
+*   Exported images allow adjustment of quality and compression ratio.
+*   Supports custom maximum image width.
+*   Provides log viewing.
 
 ---
 
@@ -127,44 +170,40 @@ AudioFFT decodes the entire audio stream into memory (`float` PCM format) to ens
 `ffmpeg`, `fftw3`, `libpng`, `zlib`, `libjpeg-turbo`, `tiff`, `openjpeg`, `libwebp`, `libavif`.
 
 **Steps:**
-1.  **Download the AudioFFT Source code:**
 
-    Download the AudioFFT source code from GitHub.
-
-2.  **Configure using CMake and vcpkg:**
-    ```x64 Native Tools Command Prompt for VS 2022
-    cd [path_to_AudioFFT]\build
-    
-    cmake .. -DCMAKE_TOOLCHAIN_FILE=[path_to_vcpkg]\scripts\buildsystems\vcpkg.cmake -DCMAKE_PREFIX_PATH=[path_to_Qt]\Qt\6.9.2\msvc2022_64
-    ```
-
-3. **Build:**
-    ```x64 Native Tools Command Prompt for VS 2022
-    cmake --build . --config Release
-    ```
+Assuming your source is in C:\AudioFFT and vcpkg is installed at C:\vcpkg and Qt is installed at C:\Qt:
 
 
+```cmd
+cd C:\AudioFFT\build
 
-4.  **Deploy:**
+cmake .. -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DCMAKE_PREFIX_PATH=C:\Qt\6.9.2\msvc2022_64
 
-    The executable will be in `build/Release`. You may need to run `windeployqt` or manually copy the required DLLs to run the application outside the IDE.
-    ```x64 Native Tools Command Prompt for VS 2022
-    [path_to_Qt]\Qt\6.9.2\msvc2022_64\bin\windeployqt.exe C:\[path_to_AudioFFT]\build\Release\AudioFFT.exe
-    ```
+cmake --build . --config Release
+
+C:\Qt\6.9.2\msvc2022_64\bin\windeployqt.exe C:\AudioFFT\build\Release\AudioFFT.exe
+```
 
 ---
 
-## Credits & License
+## Third-Party Assets & Licenses
 
-**AudioFFT** is free software licensed under the **GNU General Public License v3.0 (GPLv3)**.
+AudioFFT uses the following third-party assets:
 
-This software relies on the following excellent open-source projects:
+| Component | Purpose | License |
+| :--- | :--- | :--- |
+| **Qt 6** | Graphical user interface (GUI) | GNU LGPL version 3 |
+| **FFmpeg** | Audio decoding and playback | GNU LGPL version 2.1 or later |
+| **FFTW3** | Fast Fourier Transform (FFT) | GNU GPL version 2 or later |
+| **libjpeg-turbo** | JPEG image encoding | IJG |
+| **libpng** | PNG image encoding | libpng/zlib |
+| **zlib** | Data compression (dependency of libpng) | zlib |
+| **libtiff** | TIFF image encoding | BSD-style |
+| **OpenJPEG** | JPEG 2000 image encoding | BSD 2-Clause |
+| **libwebp** | WebP image encoding | BSD 3-Clause |
+| **libavif** | AVIF image encoding | BSD 2-Clause |
+| **libaom** | Image encoding (dependency of libavif) | BSD 2-Clause |
 
-*   **[Qt 6](https://www.qt.io/)**: GUI Framework (LGPLv3).
-*   **[FFmpeg](https://ffmpeg.org/)**: Audio decoding and stream handling (LGPLv2.1+).
-*   **[FFTW3](http://www.fftw.org/)**: Fastest Fourier Transform in the West (GPLv2+).
-*   **Image Libraries**: `libpng` (PNG Reference Library), `libjpeg-turbo`, `libtiff`, `OpenJPEG`, `libwebp`, `libavif`.
-
+---
 
 *Developed with ❤️ by Emma Winter.*
-

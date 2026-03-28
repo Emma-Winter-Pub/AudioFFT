@@ -33,15 +33,6 @@ Built with **Qt 6**, **FFmpeg**, and **FFTW3**, AudioFFT delivers lightning-fast
 - [Build from Source](#build-from-source)
 - [Third-Party Assets & Licenses](#third-party-assets--licenses)
 
----
-
-## Download & Installation
-
-### For Windows Users
-1.  Navigate to the **[Releases](../../releases)** page on the right side of this repository.
-2.  Download the latest `AudioFFT_v1.1_Win-x64.zip`.
-3.  Extract the ZIP file to any folder.
-4.  Run `AudioFFT.exe`. No installation is required(If it fails to start (or reports missing DLLs), please install the **Microsoft Visual C++ Redistributable (`vc_redist.x64.exe`)**).
 
 ---
 
@@ -52,6 +43,16 @@ Built with **Qt 6**, **FFmpeg**, and **FFTW3**, AudioFFT delivers lightning-fast
 *   Supports parameter adjustment.
 *   Supports multiple image formats.
 *   Supports batch processing.
+
+---
+
+## Download & Installation
+
+### For Windows Users
+1.  Navigate to the **[Releases](../../releases)** page on the right side of this repository.
+2.  Download the latest `AudioFFT_v1.1_Win-x64.zip`.
+3.  Extract the ZIP file to any folder.
+4.  Run `AudioFFT.exe`. No installation is required(If it fails to start (or reports missing DLLs), please install the **Microsoft Visual C++ Redistributable (`vc_redist.x64.exe`)**).
 
 ---
 

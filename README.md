@@ -206,5 +206,89 @@ AudioFFT uses the following third-party assets:
 | **libaom** | Image encoding (dependency of libavif) | BSD 2-Clause |
 
 ---
+graph TD
+    Start([Probe Audio Format in UnifiedAudioDecoder]) --> A
 
+    %% ================= Module 1: Initialization & Thread Calculation =================
+    subgraph Initialization Phase
+        A{A: Check Total Duration}
+        A -- A1: ≥ 120s --> B[B: Theoretical Threads = Duration / 3]
+        A -- A2: < 120s --> Z
+
+        B --> C{C: OS Thread Count}
+        C -- C1: > 1 --> D[D: t = min Theoretical, OS]
+        C -- C2: == 1 --> Z
+
+        D --> E[E: Actual Threads n = t]
+    end
+
+    %% ================= Module 2: Core Processing Pipeline =================
+    subgraph Parallel Decoding & Splicing
+        E --> F[F: Generate Cut-points Array]
+        F --> G[G: Execute Logical Segmentation]
+        G --> H[H: Physical Segs = Logical + 1s Preroll/Postroll]
+        H --> I[I: Multi-thread Decode Physical Segments]
+        I --> J{J: Anchor PCM Check}
+
+        J -- J1: All Valid --> K{K: Search & Match}
+        K -- K1: All Successful --> L[L: In-place Virtual Cropping]
+        L --> M[M: Allocate Continuous Aligned Memory]
+        M --> N[N: Copy & Seamless Splice]
+        N --> O([O: Full PCM Obtained Successfully!])
+    end
+
+    %% ================= Module 3: Fault Tolerance & Retry Mechanism =================
+    subgraph Fault Tolerance & Retry Mechanism
+        J -- J2: Invalid Found --> U{U: Check Range of t}
+        K -- K2: Match Failed --> U
+
+        U -- U1: t ∈ [2, 4] --> V{V: Check Audio Duration}
+        U -- U2: t ∈ [5, +∞) --> W[W: Counter w++]
+
+        %% W Branch Logic
+        W --> JCW{JCW: w Quota Check}
+        JCW -- JCW1: Within Quota --> n_minus[n = n - 1]
+        n_minus -. Retry .-> E
+        JCW -- JCW2: Exceeds Quota --> Z
+
+        %% V Branch Logic
+        V -- V1: [120, 180]s --> Z
+        V -- V2: 180, 600s --> X[X: Counter x++]
+        V -- V3: > 600s --> Y[Y: Counter y++]
+
+        %% X Branch Logic
+        X --> JCX{JCX: x Quota Check}
+        JCX -- JCX1: x == 1 --> x_shift[Shift problem cut 10s backward]
+        x_shift -. Re-segment .-> F
+        JCX -- JCX2: x > 1 --> Z
+
+        %% Y Branch Logic
+        Y --> JCY{JCY: y Quota Check}
+        JCY -- JCY1: y == 1 --> y_shift_b[Shift problem cut 10s backward]
+        y_shift_b -. Re-segment .-> F
+        JCY -- JCY2: y == 2 --> y_shift_f[Shift problem cut 10s forward]
+        y_shift_f -. Re-segment .-> F
+        JCY -- JCY3: y > 2 --> Z
+    end
+
+    %% ================= Fallback Exit =================
+    Z([Z: Abort Parallel, Fallback to Single-thread Decode])
+
+    %% ================= Node Styles Definition =================
+    classDef start_end fill:#2D3748,stroke:#00ADB5,stroke-width:2px,color:#fff;
+    classDef process fill:#3182CE,stroke:#2B6CB0,stroke-width:1px,color:#fff;
+    classDef decision fill:#DD6B20,stroke:#C05621,stroke-width:1px,color:#fff;
+    classDef success fill:#38A169,stroke:#2F855A,stroke-width:2px,color:#fff;
+    classDef fallback fill:#E53E3E,stroke:#C53030,stroke-width:2px,color:#fff;
+    classDef retry fill:#805AD5,stroke:#6B46C1,stroke-width:1px,color:#fff,stroke-dasharray: 5 5;
+
+    %% Apply Styles
+    class Start start_end;
+    class A,C,J,K,U,V,JCW,JCX,JCY decision;
+    class B,D,E,F,G,H,I,L,M,N process;
+    class O success;
+    class Z fallback;
+    class W,X,Y,n_minus,x_shift,y_shift_b,y_shift_f retry;
+
+---
 *Developed with ❤️ by Emma Winter.*

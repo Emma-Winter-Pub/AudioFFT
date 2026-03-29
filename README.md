@@ -206,6 +206,7 @@ AudioFFT uses the following third-party assets:
 | **libaom** | Image encoding (dependency of libavif) | BSD 2-Clause |
 
 ---
+This is AudioFFT's multi-threaded decoding solution for APE (Monkey's Audio) audio.
 ```mermaid
 graph TD
     Start([Probe Audio Format in UnifiedAudioDecoder]) --> A

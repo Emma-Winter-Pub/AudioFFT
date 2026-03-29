@@ -206,7 +206,7 @@ AudioFFT uses the following third-party assets:
 | **libaom** | Image encoding (dependency of libavif) | BSD 2-Clause |
 
 ---
-```
+```mermaid
 graph TD
     Start([Probe Audio Format in UnifiedAudioDecoder]) --> A
 

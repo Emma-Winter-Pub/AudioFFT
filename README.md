@@ -206,6 +206,7 @@ AudioFFT uses the following third-party assets:
 | **libaom** | Image encoding (dependency of libavif) | BSD 2-Clause |
 
 ---
+```
 graph TD
     Start([Probe Audio Format in UnifiedAudioDecoder]) --> A
 
@@ -289,6 +290,6 @@ graph TD
     class O success;
     class Z fallback;
     class W,X,Y,n_minus,x_shift,y_shift_b,y_shift_f retry;
-
+```
 ---
 *Developed with ❤️ by Emma Winter.*

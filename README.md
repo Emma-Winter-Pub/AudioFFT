@@ -5,9 +5,13 @@
 ![License](https://img.shields.io/badge/license-LGPLv3-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-**AudioFFT** is an audio spectrum viewing and exporting tool that converts files containing audio streams into high-quality visualized spectrograms.
 
-Built with **Qt 6**, **FFmpeg**, and **FFTW3**, AudioFFT delivers lightning-fast parallel decoding, extreme precision, and a fluid interactive interface.
+**AudioFFT** — High-Performance Audio Spectrogram Analyzer & Batch Export Powerhouse.
+
+Quickly convert **any audio file** into **high-resolution spectrograms**, with full support for **interactive single-file analysis** + **massive batch processing**.
+
+Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, and rendering — is extremely optimized. Supports ultra-long audio streaming, GPU hardware acceleration, and a multi-language interface.
+
 
 ![Screenshot](Screenshot/01.png)
 ![Screenshot](Screenshot/02.png)
@@ -36,13 +40,16 @@ Built with **Qt 6**, **FFmpeg**, and **FFTW3**, AudioFFT delivers lightning-fast
 
 ---
 
-## Features
+## ✨ Key Features
 
-*   Supports multiple audio formats.
-*   Interactive spectrogram viewer.
-*   Supports parameter adjustment.
-*   Supports multiple image formats.
-*   Supports batch processing.
+- **Supports nearly all audio formats** (FLAC, ALAC, DSD, APE, CUE track splitting, and more).
+- **Interactive spectrogram viewer**: real-time zoom, pan, crosshair cursor, frequency distribution graph.
+- **Ultra-low memory streaming mode**: silky-smooth analysis even for extremely long audio files.
+- **Powerful batch processing**: one-click folder export, multi-threaded, with Full Load / Streaming dual modes.
+- **Rich adjustable parameters**: window functions, frequency mapping, color palettes, dB range, precision, channel mixing, and more.
+- **Multi-language interface**: 简体中文, 繁體中文, 日本語, 한국어, Deutsch, English, Français, Русский.
+- **GPU hardware acceleration**: intelligent caching for blazing-fast performance.
+
 
 ---
 
@@ -122,7 +129,7 @@ Built with **Qt 6**, **FFmpeg**, and **FFTW3**, AudioFFT delivers lightning-fast
 *   Added screenshot functionality.
 *   Added settings panel.
 *   Added user configuration saving.
-*   Added multi-language support: Simplified Chinese, Traditional Chinese, Japanese, Korean, German, English, French, and Russian.
+*   Added multi-language support: 简体中文, 繁體中文, 日本語, 한국어, Deutsch, English, Français, Русский.
 *   Expanded the range of height values and added original FFT point-to-point resolution values.
 *   Expanded the range of time precision values and added automatic zero-overlap rate.
 *   Expanded the number of mapping functions.

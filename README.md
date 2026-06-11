@@ -1,6 +1,6 @@
 # AudioFFT
 
-![Version](https://img.shields.io/badge/version-1.1-blue)
+![Version](https://img.shields.io/badge/version-1.2-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows_x64-lightgrey)
 ![License](https://img.shields.io/badge/license-LGPLv3-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)

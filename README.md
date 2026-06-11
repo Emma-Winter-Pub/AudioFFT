@@ -219,6 +219,7 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 *   **CMake**: 3.18+
 *   **vcpkg**: Required for dependency management.
 *   **Qt**: 6.9.2+
+*   **FFmpeg**: 7.1 / 8.0 / 8.1
 
 **Dependencies (Managed via vcpkg):**
 `ffmpeg`, `fftw3`, `libpng`, `zlib`, `libjpeg-turbo`, `tiff`, `openjpeg`, `libwebp`, `libavif`.

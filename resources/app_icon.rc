@@ -1,0 +1,36 @@
+#include <windows.h>
+
+IDI_ICON1 ICON "AudioFFT_logo.ico"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,2
+ PRODUCTVERSION 1,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName",      "Emma Winter"
+            VALUE "FileDescription",  "AudioFFT - Audio Spectrum Viewer and Exporter"
+            VALUE "FileVersion",      "1.2"
+            VALUE "InternalName",     "AudioFFT.exe"
+            VALUE "LegalCopyright",   "Copyright (C) 2026 Emma Winter. All rights reserved."
+            VALUE "OriginalFilename", "AudioFFT.exe"
+            VALUE "ProductName",      "AudioFFT"
+            VALUE "ProductVersion",   "1.2"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0000, 1200
+    END
+END

@@ -13,6 +13,7 @@ Quickly convert **any audio file** into **high-resolution spectrograms**, with f
 Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, and rendering — is extremely optimized. Supports ultra-long audio streaming, GPU hardware acceleration, and a multi-language interface.
 
 
+![Screenshot](Screenshot/00.png)
 ![Screenshot](Screenshot/01.png)
 ![Screenshot](Screenshot/02.png)
 ![Screenshot](Screenshot/03.png)

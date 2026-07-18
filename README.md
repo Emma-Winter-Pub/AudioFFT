@@ -103,6 +103,55 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 
 ## Changelog
 
+### V1.3 (The official release date will still take some time)
+
+**New**
+*   Added new FFT window functions.
+*   Added new dBFS color schemes.
+*   Added color bar direction inversion.
+*   Added color inversion.
+*   Added indexed format support for PNG and BMP images.
+*   Added support for user-defined color bars.
+*   Added signal transmission to Windows 10/11 System Media Transport Controls (SMTC).
+
+**Optimizations**
+*   Refactored the color scheme module.
+*   Adjusted several default parameters.
+*   Adjusted build configurations to support both MSVC and GCC compilers.
+*   Uncoupled the player stop operation from the playback progress reset lifecycle.
+*   Added global FFTW resource cleanup process.
+*   Added memory release mechanism for Linux platform.
+*   Optimized libpng export algorithm.
+*   Optimized FFT algorithm.
+*   Optimized frequency-domain mapping algorithm.
+*   Optimized the loop nest order for spectrogram rendering.
+*   Optimized memory management of the audio resampler.
+*   Optimized memory pre-allocation logic for multi-threaded decoding.
+*   Optimized data transfer in CPU rendering mode.
+*   Optimized GPU vertex buffer updates.
+*   Optimized the construction logic for GPU dynamic vertices.
+
+**Fixes**
+*   Fixed an issue where only the first frame curve was drawn.
+*   Fixed unexpected playback termination issues.
+*   Fixed an issue where FFT cache was not automatically reclaimed.
+*   Fixed potential memory spikes during multi-threaded decoded data merging.
+*   Fixed unaligned memory access issues in the FFmpeg decoder.
+*   Fixed FFTW data races and crash issues.
+*   Fixed memory leaks in the PNG encoder.
+*   Fixed uncontrolled crashes in the PNG error callback function.
+*   Fixed potential dangling pointer crashes in the screenshot feature.
+*   Fixed a COM determination logic error in the storage analysis module.
+*   Fixed division-by-zero errors in window functions.
+*   Fixed rendering crashes in the GPU module under extreme conditions.
+*   Fixed cross-platform build failures.
+*   Fixed visual tearing issues of the playhead.
+*   Fixed audio-video desynchronization in the player.
+*   Fixed offset issues during screenshot capture.
+*   Fixed anchor point identification anomalies in APE parallel decoding.
+*   Fixed a bug where batch processing triggered an infinite loop with APE files.
+*   Fixed missing log issues during batch processing.
+
 ### V1.2 (2026-06-10)
 
 **New**

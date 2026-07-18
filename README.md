@@ -106,8 +106,8 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 ### V1.3 (The official release date will still take some time)
 
 **New**
-*   Added new FFT window functions.
-*   Added new dBFS color schemes.
+*   Added some FFT window functions.
+*   Added some dBFS color schemes.
 *   Added color bar direction inversion.
 *   Added color inversion.
 *   Added indexed format support for PNG and BMP images.

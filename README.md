@@ -1,6 +1,6 @@
 # AudioFFT
 
-![Version](https://img.shields.io/badge/version-1.2-blue)
+![Version](https://img.shields.io/badge/version-1.3-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows_x64-lightgrey)
 ![License](https://img.shields.io/badge/license-LGPLv3-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
@@ -16,13 +16,7 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 ![Screenshot](Screenshot/00.png)
 ![Screenshot](Screenshot/01.png)
 ![Screenshot](Screenshot/02.png)
-![Screenshot](Screenshot/03.png)
-![Screenshot](Screenshot/04.png)
-![Screenshot](Screenshot/05.png)
-![Screenshot](Screenshot/06.png)
-![Screenshot](Screenshot/07.png)
-![Screenshot](Screenshot/08.png)
-![Screenshot](Screenshot/09.png)
+
 
 ---
 
@@ -38,7 +32,6 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 - [Build from Source](#build-from-source)
 - [Third-Party Assets & Licenses](#third-party-assets--licenses)
 
-
 ---
 
 ## Key Features
@@ -50,7 +43,6 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 - **Rich adjustable parameters**: window functions, frequency mapping, color palettes, dB range, precision, channel mixing, and more.
 - **Multi-language interface**: 简体中文, 繁體中文, 日本語, 한국어, Deutsch, English, Français, Русский.
 - **GPU hardware acceleration**: intelligent caching for blazing-fast performance.
-
 
 ---
 
@@ -103,161 +95,65 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 
 ## Changelog
 
-### V1.3 (The official release date will still take some time)
+### V1.3 (20260725)
 
 **New**
-*   Added some FFT window functions.
-*   Added some dBFS color schemes.
-*   Added color bar direction inversion.
-*   Added color inversion.
-*   Added indexed format support for PNG and BMP images.
-*   Added support for user-defined color bars.
-*   Added signal transmission to Windows 10/11 System Media Transport Controls (SMTC).
+*   Added several FFT window functions.
+*   Added several dBFS color palettes.
+*   Added option to invert color palettes.
+*   Added option to apply negative colors to palettes.
+*   Added indexed color format for PNG and BMP images.
+*   Added support for user-defined custom color palettes.
+*   Added system media controls for Windows 10/11.
+*   Added system media controls for Linux.
+*   Added storage structure analysis module for Linux.
+*   Added ".desktop" launcher installation for Linux.
+*   Added character encoding detection.
+*   Added option to automatically expand the spectrogram upon playback.
 
 **Optimizations**
-*   Refactored the color scheme module.
-*   Adjusted several default parameters.
-*   Adjusted build configurations to support both MSVC and GCC compilers.
-*   Uncoupled the player stop operation from the playback progress reset lifecycle.
-*   Added global FFTW resource cleanup process.
-*   Added memory release mechanism for Linux platform.
-*   Optimized libpng export algorithm.
-*   Optimized FFT algorithm.
-*   Optimized frequency-domain mapping algorithm.
-*   Optimized the loop nest order for spectrogram rendering.
+*   Refactored the color palette module.
+*   Adjusted some default parameters.
+*   Adjusted window stacking properties on Linux.
+*   Adjusted the audio file association logic for CUE files.
+*   Adjusted build configurations for MSVC and GCC compiler compatibility.
+*   Decoupled the lifecycle of the player's stop operation and progress reset.
+*   Improved global FFTW resource cleanup routines.
+*   Implemented explicit memory release mechanisms for Linux.
+*   Optimized external file path parsing on Linux.
+*   Optimized the libpng export algorithm.
+*   Optimized the FFT algorithm.
+*   Optimized the frequency domain mapping algorithm.
+*   Optimized the loop nesting order for spectrogram rendering.
 *   Optimized memory management of the audio resampler.
 *   Optimized memory pre-allocation logic for multi-threaded decoding.
 *   Optimized data transfer in CPU rendering mode.
 *   Optimized GPU vertex buffer updates.
-*   Optimized the construction logic for GPU dynamic vertices.
+*   Optimized the construction logic of dynamic vertices on the GPU.
 
 **Fixes**
-*   Fixed an issue where only the first frame curve was drawn.
-*   Fixed unexpected playback termination issues.
-*   Fixed an issue where FFT cache was not automatically reclaimed.
-*   Fixed potential memory spikes during multi-threaded decoded data merging.
-*   Fixed unaligned memory access issues in the FFmpeg decoder.
-*   Fixed FFTW data races and crash issues.
-*   Fixed memory leaks in the PNG encoder.
-*   Fixed uncontrolled crashes in the PNG error callback function.
-*   Fixed potential dangling pointer crashes in the screenshot feature.
-*   Fixed a COM determination logic error in the storage analysis module.
-*   Fixed division-by-zero errors in window functions.
-*   Fixed rendering crashes in the GPU module under extreme conditions.
-*   Fixed cross-platform build failures.
-*   Fixed visual tearing issues of the playhead.
-*   Fixed audio-video desynchronization in the player.
-*   Fixed offset issues during screenshot capture.
-*   Fixed anchor point identification anomalies in APE parallel decoding.
-*   Fixed a bug where batch processing triggered an infinite loop with APE files.
-*   Fixed missing log issues during batch processing.
-
-### V1.2 (2026-06-10)
-
-**New**
-*   Added storage device analysis module.
-*   Added virtualized log list view.
-*   Added periodic notifications during the batch processing scan phase.
-*   Added file extension filtering mechanism for batch processing scans.
-*   Added detection and logging of abnormal files during batch processing.
-*   Added option to exclude video files in batch processing.
-*   Added option to categorize output by encoding type in batch processing.
-*   Added horizontal layout direction for the spectrum profile.
-*   Added frame rate synchronization between the spectrum profile and the playhead.
-*   Added option to allow multiple instances to run concurrently.
-*   Added option to auto-play when opening files via OS file associations.
-*   Added option to select the default workspace on startup.
-
-**Optimizations**
-*   Optimized the accuracy and fault tolerance of the CUE parser.
-*   Optimized the rendering smoothness of the log window.
-*   Optimized the underlying time synchronization mechanism of the audio player.
-*   Optimized the management strategy for background asynchronous tasks and thread lifecycles.
-*   Optimized memory safety allocation checks during spectrogram rendering.
-*   Optimized the invocation timing of the storage device analysis.
-*   Optimized the settings logging for batch processing.
-
-**Fixes**
-*   Fixed issue with the audio track number display.
-*   Fixed CUE parsing errors.
-*   Fixed issue where residual data was not cleaned up upon dedicated decoding pipeline failure.
-*   Fixed potential memory leak in the JPEG image encoder.
-*   Fixed underlying API access violation when the audio output device is unplugged during playback.
-*   Fixed infinite layout response loop that occurred when window or control sizes did not actually change.
-*   Fixed lifecycle and backpressure synchronization issues in the batch processing asynchronous write queue.
-*   Fixed issue where the single-sided Fourier transform lacked double-sided energy compensation, resulting in overall lower spectral energy calculations.
-*   Fixed severe memory leak and double-free issue caused by improper cleanup of FFmpeg custom I/O streams.
-*   Fixed crash caused by background asynchronous threads capturing dangling pointers when switching or closing windows during image export.
-*   Fixed save failure when exporting TIFF and JPEG 2000 formats on Windows due to a lack of Unicode path support.
-*   Fixed potential out-of-bounds memory crash on Windows when capturing screenshots with the mouse cursor, caused by missing validation of underlying API return values.
-*   Fixed issue where the spectrum overlay might display incorrectly under GPU hardware acceleration due to improper OpenGL context format initialization timing.
-*   Fixed heap memory corruption and application crashes caused by accessing dangling pointers of destroyed objects during batch processing task cleanup.
-*   Fixed memory leak during I/O thread initialization.
-*   Fixed sequential logic error for disabling UI buttons during batch processing.
-*   Fixed issue where batch processing tasks could not be paused, resumed, or terminated during the scanning phase.
-*   Fixed output path calculation errors during batch processing.
-*   Fixed issue where the batch processing view incorrectly responded to the spacebar.
-
-### V1.1 (2026-03-28)
-
-**New**
-*   Added streaming processing.
-*   Added multi-threaded decoding for FLAC, ALAC, and DSD formats.
-*   Added adaptive 32/64-bit floating-point computation precision.
-*   Added dynamic memory loading strategy for full mode.
-*   Added track switching.
-*   Added support for opening CUE files.
-*   Added CUE split-track switching.
-*   Added channel switching.
-*   Added FFT window function selection.
-*   Added spectrogram color scheme selection.
-*   Added spectrogram dB value adjustment.
-*   Added caching mechanism for Fourier transform computation results.
-*   Added duplicate task reminder for batch processing.
-*   Added player with latency compensation.
-*   Added adjustable crosshair cursor.
-*   Added probe with switchable data source.
-*   Added frequency distribution graph display.
-*   Added GPU hardware acceleration.
-*   Added component show/hide control.
-*   Added frame rate adjustment.
-*   Added I/O scheduling for batch processing.
-*   Added screenshot functionality.
-*   Added settings panel.
-*   Added user configuration saving.
-*   Added multi-language support: 简体中文, 繁體中文, 日本語, 한국어, Deutsch, English, Français, Русский.
-*   Expanded the range of height values and added original FFT point-to-point resolution values.
-*   Expanded the range of time precision values and added automatic zero-overlap rate.
-*   Expanded the number of mapping functions.
-
-**Optimizations**
-*   Optimized audio decoding speed.
-*   Optimized Fourier transform speed.
-*   Optimized spectrogram rendering speed.
-*   Optimized log content and layout.
-*   Optimized the logic and smoothness of spectrogram zooming and panning.
-*   Changed the user interface to Ribbon style.
-
-**Fixes**
-*   Fixed errors in multi-threaded decoding for APE format.
-*   Fixed inaccurate audio duration display for some files.
-*   Fixed FFmpeg resource leaks.
-*   Fixed program crashes caused by thread contention.
-*   Fixed program crashes caused by Fourier transform during batch processing.
-*   Fixed save failures in batch processing when image size exceeded format limits.
-
-### V1.0 (2025-12-21)
-
-*   Supports two working modes: single-file and batch processing.
-*   Supports the vast majority of common audio formats.
-*   Spectrogram supports panning and zooming.
-*   Preset multiple frequency mapping functions.
-*   Spectrogram height and time precision can be adjusted.
-*   Provides grid for easy alignment and viewing.
-*   Supports exporting to multiple image formats.
-*   Exported images allow adjustment of quality and compression ratio.
-*   Supports custom maximum image width.
-*   Provides log viewing.
+*   Fixed an issue where the spectrum profile always drew the first frame.
+*   Fixed an issue where the player unexpectedly stopped playback.
+*   Fixed an issue where the FFT cache could not be automatically cleared.
+*   Fixed a memory spike vulnerability during data merging in multi-threaded decoding.
+*   Fixed an unaligned memory error in the FFmpeg decoder.
+*   Fixed data races and program crashes related to FFTW.
+*   Fixed a memory leak in the PNG encoder.
+*   Fixed uncontrollable crashes in the PNG error callback.
+*   Fixed a dangling pointer crash risk in the screenshot feature.
+*   Fixed an error in the COM evaluation logic within the storage analysis module.
+*   Fixed a division-by-zero error in window functions.
+*   Fixed an issue where the GPU rendering module crashed under extreme conditions.
+*   Fixed build failures caused by cross-platform incompatibilities.
+*   Fixed visual tearing issues with the playhead.
+*   Fixed audio-visual desynchronization issues in the player.
+*   Fixed an issue where screenshots were captured with a visual offset.
+*   Fixed anchor point recognition anomalies in APE parallel decoding.
+*   Fixed a vulnerability where batch processing could trigger an infinite loop for APE files.
+*   Fixed an issue where logs were omitted during batch processing.
+*   Fixed playback blocking issues when switching workspaces on Linux.
+*   Fixed a permanent deadlock when exceptions occurred during batch processing.
+*   Fixed memory access violation crashes when stopping tasks or exiting the application.
 
 ---
 

@@ -1,0 +1,100 @@
+#include "StreamingFFT64.h"
+#include "FFTWGlobalLock.h"
+
+#include <cmath>
+#include <algorithm>
+#include <cstring>
+
+StreamingFFT64::StreamingFFT64() {}
+
+StreamingFFT64::~StreamingFFT64() {}
+
+void StreamingFFT64::reset() {
+    m_residueBuffer.clear();
+    m_samplesToSkip = 0;
+    if (m_fftSize > 0) {
+        m_residueBuffer.reserve(m_fftSize * 2);
+    }
+}
+
+bool StreamingFFT64::configure(int fftSize, int hopSize, FFTWindowType windowType, double windowParam) {
+    m_plan.reset();
+    m_fftInput.reset();
+    m_fftOutput.reset();
+    reset();
+    if (fftSize <= 0 || hopSize <= 0) return false;
+    m_fftSize = fftSize;
+    m_hopSize = hopSize;
+    m_binCount = fftSize / 2 + 1;
+    m_fftInput = FftwDouble::allocReal(m_fftSize);
+    m_fftOutput = FftwDouble::allocComplex(m_binCount);
+    if (!m_fftInput || !m_fftOutput) {
+        return false;
+    }
+    {
+        std::lock_guard<std::recursive_mutex> lock(getFFTWGlobalLock());
+        m_plan = FftwDouble::PlanPtr(fftw_plan_dft_r2c_1d(
+            m_fftSize, 
+            m_fftInput.get(), 
+            m_fftOutput.get(), 
+            FFTW_ESTIMATE
+        ));
+    }
+    if (!m_plan) {
+        return false;
+    }
+    m_window = FFTWindowFunctions::generate(m_fftSize, windowType, windowParam);
+    return true;
+}
+
+StreamingTypes::StreamingSpectrumData64 StreamingFFT64::process(const StreamingTypes::StreamingPcmData64& inputChunk) {
+    StreamingTypes::StreamingSpectrumData64 outputSpectrums;
+    if (!m_plan) return outputSpectrums;
+    if (!inputChunk.empty()) {
+        m_residueBuffer.insert(m_residueBuffer.end(), inputChunk.begin(), inputChunk.end());
+    }
+    size_t processedOffset = m_samplesToSkip;
+    double* inPtr = m_fftInput.get();
+    fftw_complex* outPtr = m_fftOutput.get();
+    while (processedOffset + m_fftSize <= m_residueBuffer.size()) {
+        const double* windowStart = m_residueBuffer.data() + processedOffset;
+        for (int i = 0; i < m_fftSize; ++i) {
+            inPtr[i] = windowStart[i] * m_window[i];
+        }
+        fftw_execute(m_plan.get());
+        size_t currentOutputSize = outputSpectrums.size();
+        outputSpectrums.resize(currentOutputSize + m_binCount);
+        double* outputDest = outputSpectrums.data() + currentOutputSize;
+        double normFactorSq = static_cast<double>(m_fftSize) * static_cast<double>(m_fftSize);
+        for (int i = 0; i < m_binCount; ++i) {
+            double re = outPtr[i][0];
+            double im = outPtr[i][1];
+            double power = (re * re + im * im) / normFactorSq;
+            if (i > 0 && i < m_binCount - 1) power *= 4.0;
+            outputDest[i] = 10.0 * std::log10(power + 1e-18);
+        }
+        processedOffset += m_hopSize;
+    }
+    if (processedOffset < m_residueBuffer.size()) {
+        size_t remainingSize = m_residueBuffer.size() - processedOffset;
+        std::memmove(m_residueBuffer.data(), m_residueBuffer.data() + processedOffset, remainingSize * sizeof(double));
+        m_residueBuffer.resize(remainingSize);
+        m_samplesToSkip = 0;
+    } 
+    else {
+        m_samplesToSkip = processedOffset - m_residueBuffer.size();
+        m_residueBuffer.clear();
+    }
+    return outputSpectrums;
+}
+
+StreamingTypes::StreamingSpectrumData64 StreamingFFT64::flush() {
+    if (m_residueBuffer.empty()) {
+        return StreamingTypes::StreamingSpectrumData64();
+    }
+    if (m_residueBuffer.size() < static_cast<size_t>(m_fftSize)) {
+        size_t paddingCount = m_fftSize - m_residueBuffer.size();
+        m_residueBuffer.insert(m_residueBuffer.end(), paddingCount, 0.0);
+    }
+    return process(StreamingTypes::StreamingPcmData64());
+}

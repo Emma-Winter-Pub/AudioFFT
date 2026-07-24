@@ -63,7 +63,7 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 4. Run `AudioFFT`.
 
 ### For Other Linux Users
-Pre-compiled AppImage/Binaries are available in the Releases page. Alternatively, see the [Build from Source](#build-from-source) section below. (A `.desktop` launcher is automatically integrated).
+See the [Build from Source](#build-from-source) section below. (A `.desktop` launcher is automatically integrated).
 
 ---
 

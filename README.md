@@ -220,9 +220,9 @@ AudioFFT uses the following third-party assets:
 
 | Component | Purpose | License |
 | :--- | :--- | :--- |
-| **[Qt 6](https://www.qt.io/)** | GUI & Cross-platform framework | LGPL v3 |
-| **[FFmpeg](https://ffmpeg.org/)** | Audio decoding & multimedia processing | LGPL v2.1+ |
-| **[FFTW3](http://www.fftw.org/)** | Fast Fourier Transform computation | **GPL v2+** |
+| **Qt 6** | GUI & Cross-platform framework | LGPL v3 |
+| **FFmpeg** | Audio decoding & multimedia processing | LGPL v2.1+ |
+| **FFTW3** | Fast Fourier Transform computation | GPL v2+ |
 | **libpng / zlib** | PNG image encoding & compression | libpng/zlib |
 | **libjpeg-turbo** | JPEG image encoding | IJG / BSD-style / zlib |
 | **libtiff** | TIFF image encoding | BSD-style |

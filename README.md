@@ -199,7 +199,7 @@ C:\Qt\6.9.2\msvc2022_64\bin\windeployqt.exe C:\AudioFFT\build\Release\AudioFFT.e
 
 **Steps: Linux**
 
-clone AudioFFT source form github.com
+Clone AudioFFT source form github.com
 
 
 ```cmd

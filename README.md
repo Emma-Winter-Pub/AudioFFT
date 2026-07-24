@@ -1,8 +1,8 @@
 # AudioFFT
 
 ![Version](https://img.shields.io/badge/version-1.3-blue)
-![Platform](https://img.shields.io/badge/platform-Windows_x64-lightgrey)
-![License](https://img.shields.io/badge/license-LGPLv3-green)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey)
+![License](https://img.shields.io/badge/license-GPLv3-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
 
@@ -49,10 +49,20 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 ## Download & Installation
 
 ### For Windows Users
-1.  Navigate to the **[Releases](../../releases)** page on the right side of this repository.
-2.  Download the latest `AudioFFT_v1.2_Win-x64.zip`.
-3.  Extract the ZIP file to any folder.
-4.  Run `AudioFFT.exe`. No installation is required. If it fails to start, or reports missing `*.dll`, please install the **Microsoft Visual C++ Redistributable (`vc_redist.x64.exe`)**.
+1. Navigate to the **[Releases](../../releases)** page of this repository.
+2. Download the latest `AudioFFT_v1.3_Win-x64.zip`.
+3. Extract the ZIP file to any folder.
+4. Run `AudioFFT.exe`. No installation is required.
+*(Note: If it fails to start or reports missing `*.dll` files, please install the [Microsoft Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)).*
+
+### For Deepin Linux Users
+1. Navigate to the **[Releases](../../releases)** page of this repository.
+2. Download the latest `AudioFFT_v1.3_Linux-Deepin-x64.zip`.
+3. Extract the ZIP file to any folder.
+4. Run `AudioFFT`.
+
+### For Other Linux Users
+Pre-compiled AppImage/Binaries are available in the Releases page. Alternatively, see the [Build from Source](#build-from-source) section below. (A `.desktop` launcher is automatically integrated).
 
 ---
 
@@ -95,7 +105,7 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 
 ## Changelog
 
-### V1.3 (20260725)
+### V1.3 (2026-07-25)
 
 **New**
 *   Added several FFT window functions.
@@ -160,17 +170,18 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 ## Build from Source
 
 **Requirements:**
-*   **OS**: Windows 10/11 x64
-*   **Compiler**: MSVC (Visual Studio 2019 or 2022) with C++17 support.
+*   **OS**: Windows 10/11 x64, Linux x64
+*   **Compiler**: MSVC (Visual Studio 2019 or 2022) with C++17 support, GCC or Clang with C++17 support.
 *   **CMake**: 3.18+
 *   **vcpkg**: Required for dependency management.
+*   **Python**: 3.0 +
 *   **Qt**: 6.9.2+
 *   **FFmpeg**: 7.1 / 8.0 / 8.1
 
 **Dependencies (Managed via vcpkg):**
-`ffmpeg`, `fftw3`, `libpng`, `zlib`, `libjpeg-turbo`, `tiff`, `openjpeg`, `libwebp`, `libavif`.
+`ffmpeg`, `fftw3`, `libpng`, `zlib`, `libjpeg-turbo`, `tiff`, `openjpeg`, `libwebp`, `libavif`, `libaom`, `libyuv`.
 
-**Steps:**
+**Steps: Windows**
 
 Assuming your source is in C:\AudioFFT and vcpkg is installed at C:\vcpkg and Qt is installed at C:\Qt:
 
@@ -185,6 +196,21 @@ cmake --build . --config Release
 C:\Qt\6.9.2\msvc2022_64\bin\windeployqt.exe C:\AudioFFT\build\Release\AudioFFT.exe
 ```
 
+**Steps: Linux**
+
+clone AudioFFT source form github.com
+
+
+```cmd
+cd "/path/to/AudioFFT"
+
+mkdir build && cd build
+
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
+make -j$(nproc)
+```
+
 ---
 
 ## Third-Party Assets & Licenses
@@ -193,14 +219,22 @@ AudioFFT uses the following third-party assets:
 
 | Component | Purpose | License |
 | :--- | :--- | :--- |
-| **Qt 6** | Graphical user interface (GUI) | GNU LGPL version 3 |
-| **FFmpeg** | Audio decoding and playback | GNU LGPL version 2.1 or later |
-| **FFTW3** | Fast Fourier Transform (FFT) | GNU GPL version 2 or later |
-| **libjpeg-turbo** | JPEG image encoding | IJG |
-| **libpng** | PNG image encoding | libpng/zlib |
-| **zlib** | Data compression (dependency of libpng) | zlib |
+| **[Qt 6](https://www.qt.io/)** | GUI & Cross-platform framework | LGPL v3 |
+| **[FFmpeg](https://ffmpeg.org/)** | Audio decoding & multimedia processing | LGPL v2.1+ |
+| **[FFTW3](http://www.fftw.org/)** | Fast Fourier Transform computation | **GPL v2+** |
+| **libpng / zlib** | PNG image encoding & compression | libpng/zlib |
+| **libjpeg-turbo** | JPEG image encoding | IJG / BSD-style / zlib |
 | **libtiff** | TIFF image encoding | BSD-style |
 | **OpenJPEG** | JPEG 2000 image encoding | BSD 2-Clause |
 | **libwebp** | WebP image encoding | BSD 3-Clause |
-| **libavif** | AVIF image encoding | BSD 2-Clause |
-| **libaom** | Image encoding (dependency of libavif) | BSD 2-Clause |
+| **libavif / libaom**| AVIF / AV1 image encoding | BSD 2-Clause |
+| **libyuv** | Pixel format conversion & scaling | BSD 3-Clause |
+
+AudioFFT includes stunning, perceptually uniform color maps created by the scientific community:
+* **Matplotlib Perceptual Maps** by Stéfan van der Walt, Nathaniel Smith (BSD 2-Clause / CC0)
+* **Turbo Colormap** by Anton Mikhailov / Google LLC (Apache 2.0)
+* **Kindlmann Maps** by Gordon Kindlmann / Univ. of Chicago (BSD 2-Clause)
+* **BentCW & SmoothCW** by Kenneth Moreland / Sandia National Laboratories (BSD 2-Clause)
+* **Scientific Colour Maps** by Dr. Fabio Crameri (CC BY 4.0)
+* **CET Perceptually Uniform Maps** by Peter Kovesi / CET UWA (CC BY 4.0)
+* **SciVisColor & ColorBrewer** by Francesca Samsel / Cynthia Brewer (CC BY 4.0 / Apache 2.0)

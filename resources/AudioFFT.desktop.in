@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=AudioFFT
+Comment=Audio Spectrum Viewer and Exporter
+Exec=@CMAKE_INSTALL_PREFIX@/bin/AudioFFT %f
+Icon=AudioFFT_logo
+Terminal=false
+Categories=AudioVideo;Audio;
+MimeType=audio/mpeg;audio/mp4;audio/aac;audio/ac3;audio/flac;audio/x-ape;audio/wav;audio/x-wav;audio/vnd.wave;audio/ogg;application/ogg;audio/opus;audio/webm;audio/x-ms-wma;audio/x-musepack;audio/x-dsf;audio/x-dff;audio/x-aiff;audio/x-wavpack;audio/x-tta;audio/amr;audio/amr-wb;audio/basic;audio/vnd.dts;audio/vnd.dts.hd;audio/x-alac;audio/x-pn-realaudio;audio/x-caf;audio/x-voc;audio/x-speex;audio/x-twinvq;audio/x-shorten;audio/x-tak;audio/x-matroska;video/mp4;video/mpeg;video/x-matroska;video/webm;video/x-msvideo;video/quicktime;

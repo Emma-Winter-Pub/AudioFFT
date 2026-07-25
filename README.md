@@ -57,7 +57,7 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 
 Note: 
 1. If fails to start.
-2. If crashes silently when loading a file,.
+2. If crashes silently when loading a file.
 3. If reports missing `*.dll` files.
 
 Please install the `vc_redist.x64.exe` ([Microsoft Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)).

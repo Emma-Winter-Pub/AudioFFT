@@ -13,6 +13,7 @@ Quickly convert **any audio file** into **high-resolution spectrograms**, with f
 Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, and rendering — is extremely optimized. Supports ultra-long audio streaming, GPU hardware acceleration, and a multi-language interface.
 
 
+
 ![Screenshot](Screenshot/00.png)
 ![Screenshot](Screenshot/01.png)
 ![Screenshot](Screenshot/02.png)
@@ -55,9 +56,9 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 4. Run `AudioFFT.exe`. No installation is required.
 
 Note: 
-
-If it fails to start, crashes silently when loading a file, or reports missing `*.dll` files.
-
+1. If fails to start.
+2. If crashes silently when loading a file,.
+3. If reports missing `*.dll` files.
 Please install the `vc_redist.x64.exe` ([Microsoft Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)).
 
 ### For Deepin Linux Users

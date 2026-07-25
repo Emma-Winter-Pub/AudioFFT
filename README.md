@@ -62,7 +62,7 @@ Note:
 
 Please install the `vc_redist.x64.exe` ([Microsoft Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)).
 
-### For Deepin Desktop Linux Users
+### For Linux Deepin Desktop Users
 1. Navigate to the **[Releases](../../releases)** page of this repository.
 2. Download the latest `AudioFFT_v1.3_Linux-Deepin-x64.zip`.
 3. Extract the ZIP file to any folder.

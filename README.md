@@ -54,7 +54,7 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 3. Extract the ZIP file to any folder.
 4. Run `AudioFFT.exe`. No installation is required.
 
-Note: If it fails to start or reports missing `*.dll` files, please install the `vc_redist.x64.exe` ([Microsoft Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)).
+Note: If it fails to start, crashes silently when loading a file, or reports missing `*.dll` files, please install the `vc_redist.x64.exe` ([Microsoft Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)).
 
 ### For Deepin Linux Users
 1. Navigate to the **[Releases](../../releases)** page of this repository.

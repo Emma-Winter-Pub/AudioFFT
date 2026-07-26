@@ -216,8 +216,6 @@ make -j$(nproc)
 
 ## Third-Party Assets & Licenses
 
-AudioFFT uses the following third-party assets:
-
 | Component | Purpose | License |
 | :--- | :--- | :--- |
 | **Qt 6** | GUI & Cross-platform framework | LGPL v3 |
@@ -231,7 +229,6 @@ AudioFFT uses the following third-party assets:
 | **libavif / libaom**| AVIF / AV1 image encoding | BSD 2-Clause |
 | **libyuv** | Pixel format conversion & scaling | BSD 3-Clause |
 
-AudioFFT includes:
 * **Matplotlib Perceptual Maps**: Stéfan van der Walt, Nathaniel Smith (BSD 2-Clause / CC0)
 * **Turbo Colormap**: Anton Mikhailov / Google LLC (Apache 2.0)
 * **Kindlmann Maps**: Gordon Kindlmann / Univ. of Chicago (BSD 2-Clause)

@@ -231,11 +231,11 @@ AudioFFT uses the following third-party assets:
 | **libavif / libaom**| AVIF / AV1 image encoding | BSD 2-Clause |
 | **libyuv** | Pixel format conversion & scaling | BSD 3-Clause |
 
-AudioFFT includes stunning, perceptually uniform color maps created by the scientific community:
-* **Matplotlib Perceptual Maps** by Stéfan van der Walt, Nathaniel Smith (BSD 2-Clause / CC0)
-* **Turbo Colormap** by Anton Mikhailov / Google LLC (Apache 2.0)
-* **Kindlmann Maps** by Gordon Kindlmann / Univ. of Chicago (BSD 2-Clause)
-* **BentCW & SmoothCW** by Kenneth Moreland / Sandia National Laboratories (BSD 2-Clause)
-* **Scientific Colour Maps** by Dr. Fabio Crameri (CC BY 4.0)
-* **CET Perceptually Uniform Maps** by Peter Kovesi / CET UWA (CC BY 4.0)
-* **SciVisColor & ColorBrewer** by Francesca Samsel / Cynthia Brewer (CC BY 4.0 / Apache 2.0)
+AudioFFT includes:
+* **Matplotlib Perceptual Maps**: Stéfan van der Walt, Nathaniel Smith (BSD 2-Clause / CC0)
+* **Turbo Colormap**: Anton Mikhailov / Google LLC (Apache 2.0)
+* **Kindlmann Maps**: Gordon Kindlmann / Univ. of Chicago (BSD 2-Clause)
+* **BentCW & SmoothCW**: Kenneth Moreland / Sandia National Laboratories (BSD 2-Clause)
+* **Scientific Colour Maps**: Dr. Fabio Crameri (CC BY 4.0)
+* **CET Perceptually Uniform Maps**: Peter Kovesi / CET UWA (CC BY 4.0)
+* **SciVisColor & ColorBrewer**: Francesca Samsel / Cynthia Brewer (CC BY 4.0 / Apache 2.0)

@@ -15,7 +15,8 @@ Built with **Qt 6 + FFmpeg + FFTW3**, every step — decoding, FFT computation, 
 
 
 ![Screenshot](Screenshot/00.png)
-![Screenshot](Screenshot/04.png)
+![Screenshot](Screenshot/01.png)
+![Screenshot](Screenshot/02.png)
 
 
 ---

@@ -107,6 +107,9 @@ void PlayerEngine::start(QSharedPointer<XPlayerProvider> provider) {
 void PlayerEngine::stop() {
     if (m_posTimer) m_posTimer->stop();
     if (m_audioSink) {
+        if (m_audioSink->state() == QAudio::SuspendedState) {
+            m_audioSink->resume();
+        }
         m_audioSink->reset();
         m_audioSink->stop();
         delete m_audioSink;
@@ -140,6 +143,9 @@ void PlayerEngine::seek(double seconds) {
     QAudio::State oldState = m_audioSink->state();
     bool wasActive = (oldState == QAudio::ActiveState || oldState == QAudio::SuspendedState);
     if (!wasActive) return;
+    if (oldState == QAudio::SuspendedState) {
+        m_audioSink->resume();
+    }
     m_audioSink->reset();
     m_audioSink->stop();
     delete m_audioSink;
@@ -175,6 +181,9 @@ void PlayerEngine::onDefaultDeviceChanged(const QAudioDevice &device) {
     }
     bool wasActive = (oldState == QAudio::ActiveState || oldState == QAudio::SuspendedState);
     if (m_audioSink) {
+        if (oldState == QAudio::SuspendedState) {
+            m_audioSink->resume();
+        }
         m_audioSink->reset();
         m_audioSink->stop();
         delete m_audioSink;

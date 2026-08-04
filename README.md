@@ -212,6 +212,8 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="/path/to/vcpkg/scrip
 make -j$(nproc)
 ```
 
+This project is designed as a portable application. Due to the severe fragmentation of the Linux ecosystem, please modify the build configuration and source code yourself to adapt to your target distribution.
+
 ---
 
 ## Third-Party Assets & Licenses

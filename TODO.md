@@ -183,8 +183,8 @@ Add configuration controls (sliders/inputs) in Settings to adjust the cache pool
 ---
 
 **25. Add 2 New View Modes to the File List (Extending the 8 Native Windows Explorer View Modes)**
-1. **"Height: 512, Width: 1024":** Highly effective for inspecting and comparing spectrogram overviews across all audio files.
-2. **"Height: 1024, Width: 512":** Ideal for closely inspecting high-frequency cutoffs (frequency shelf/rolloff).
+1. **"Height: 256, Width: 512":** Highly effective for inspecting and comparing spectrogram overviews across all audio files.
+2. **"Height: 512, Width: 256":** Ideal for closely inspecting high-frequency cutoffs (frequency shelf/rolloff).
 
 ---
 

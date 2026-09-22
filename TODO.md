@@ -97,7 +97,7 @@ Right-clicking the file list header should show a right-arrow to open a detail c
   * **Base (Radix):** Base-2 (Binary) / Base-10 (Decimal)
   * **Prefix Scale:** None / K / M / G / T (add parentheses at the end to distinguish Base-2 vs. Base-10)
   * **Decimal Point:** `,` / `.`
-  * **Thousands Separator:** None / Space / `,` / `.`
+  * **Separator:** None / Space / `,` / `.`
   * **Grouping Digits:** 3 / 4
   * **Decimal Places:** 0 / 1 / 2 / 3 / 4 (`0` means integer; or allow a `0–9` range)
 

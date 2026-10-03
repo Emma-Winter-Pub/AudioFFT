@@ -161,16 +161,19 @@ In Windows Control Panel > Sound Devices, clicking "Enable / Disable / Toggle" M
 
 **21. Preview Interface "Sync Parameters" (Unified Parameters)**
 Add a "Unified Parameters" toggle in the preview interface. When enabled, all spectrograms will re-run the processing pipeline whenever parameters are adjusted.
+**Completed.**
 
 ---
 
 **22. Viewport Anchor on View Mode Switch**
 When switching view modes, use the first visible file in the current viewport as the "anchor" to prevent the viewport position from jumping/drifting erratically.
+**Completed.**
 
 ---
 
 **23. "Read-Only Mode" Toggle in Settings**
 Consider adding a "Read-Only Mode" toggle in Settings to control/allow copy, paste, move, and delete operations.
+**Completed.**
 
 ---
 
@@ -179,6 +182,7 @@ Add configuration controls (sliders/inputs) in Settings to adjust the cache pool
 1. **Per-Tab Cache Pool Capacity:** Allocate a dedicated cache pool when a new tab is opened, and deallocate/destroy it when the tab is closed.
 2. **Total Cache Pool Capacity:** Global limit across all open tabs.
 3. **Safety Boundary:** The total capacity must not exceed the physical RAM limit and must reserve adequate memory headroom for the operating system.
+**Completed.**
 
 ---
 
@@ -190,3 +194,4 @@ Add configuration controls (sliders/inputs) in Settings to adjust the cache pool
 
 **26. Performance Issue: UI Blocking During Viewport Changes in File List**
 When changing the file list viewport (e.g., scrolling/jumping), the interaction between the "time gap mechanism" (throttling/interval scheduler) and BPBS causes severe UI blocking/stuttering. There is currently no better solution or workaround available.
+**Completed.**

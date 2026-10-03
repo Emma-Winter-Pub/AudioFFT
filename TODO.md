@@ -185,7 +185,7 @@ Add configuration controls (sliders/inputs) in Settings to adjust the cache pool
 1. **Per-Tab Cache Pool Capacity:** Allocate a dedicated cache pool when a new tab is opened, and deallocate/destroy it when the tab is closed.
 2. **Total Cache Pool Capacity:** Global limit across all open tabs.
 3. **Safety Boundary:** The total capacity must not exceed the physical RAM limit and must reserve adequate memory headroom for the operating system.
-4. 
+
 **Construction complete**
 
 ---

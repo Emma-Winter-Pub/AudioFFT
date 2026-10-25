@@ -19,7 +19,6 @@
 #include <QStringList>
 
 class BPBS_CancellationToken;
-
 using BPBS_Pcm32 = std::vector<float, AlignedAllocator<float, 64>>;
 using BPBS_Pcm64 = std::vector<double, AlignedAllocator<double, 64>>;
 using BPBS_PcmVariant = std::variant<BPBS_Pcm32, BPBS_Pcm64>;
@@ -99,6 +98,7 @@ struct BPBS_DemandItem {
     qint64 durationMs = 0;
     int distance = 0;
     std::shared_ptr<BPBS_Buffer> buffer;
+    bool isReaderAssigned = false;
 };
 
 struct BPBS_WorkerSlot {
@@ -134,14 +134,19 @@ struct BPBS_TrackInfo {
 struct BPBS_AudioMetadata {
     QString filePath;
     qint64 fileSizeBytes = 0;
+    qint64 totalAudioBytes = 0;
+    int64_t totalSamples = 0;
     QString formatName;
     QString formatLongName;
     QString codecName;
     QString codecLongName;
+    int codecId = 0;
     int sampleRateHz = 0;
     qint64 bitrateBps = 0;
+    double preciseBitrateBps = 0.0;
     int sourceBitDepth = 0;
     double durationSeconds = 0.0;
+    double preciseDurationSeconds = 0.0;
     qint64 durationMicroseconds = 0;
     QList<BPBS_TrackInfo> tracks;
     int defaultTrackIndex = -1;
@@ -150,6 +155,8 @@ struct BPBS_AudioMetadata {
     QString album;
     QString track;
     QString date;
+    QString preciseBitrateKbpsText;
+    QString preciseDurationText;
 };
 
 struct BPBS_Settings {

@@ -72,7 +72,6 @@ public:
     bool isFull() const;
     QStringList getAllPaths() const;
     std::vector<BPBS_AssetPtr> popAllReady(uint64_t fingerprint);
-
 private:
     static void splitPath(const QString& fullPath, QString& outDomain, QString& outFileName);
     void evictHistoricalDomains_Locked(qint64& bytesNeeded);

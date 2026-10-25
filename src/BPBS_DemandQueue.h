@@ -29,6 +29,7 @@ public:
     void setFastStorage(bool isFast) noexcept;
     [[nodiscard]] bool isFastStorage() const noexcept;
     std::optional<BPBS_DemandItem> claimNextForReader();
+    void assignBufferAndCodec(const QString& filePath, std::shared_ptr<BPBS_Buffer> buffer, int codecId);
     std::optional<BPBS_DemandItem> claim(int workerId,
                                          std::shared_ptr<BPBS_CancellationToken>& outToken,
                                          std::atomic<bool>* stopFlag,
@@ -47,7 +48,6 @@ public:
     int activeWorkerCount() const;
     int maxWorkers() const noexcept { return m_maxWorkers; }
     QList<BPBS_DemandItem> currentB() const;
-
 private:
     size_t getSlotIndex(int workerId) const noexcept;
     bool hasClaimableTask_Locked() const noexcept;

@@ -18,10 +18,8 @@
 #include <condition_variable>
 
 class BPBS_Worker;
-
 class BPBS_Processor : public QObject {
     Q_OBJECT
-
 public:
     explicit BPBS_Processor(QObject *parent = nullptr);
     ~BPBS_Processor() override;
@@ -39,24 +37,20 @@ public:
     BPBS_Settings currentSettings() const;
     QString currentDomain() const;
     void updateForegroundMetadata(const QString& filePath, const BPBS_AudioMetadata& meta);
-
 public slots:
     void startPreviewWorkers();
     void pause();
     void resume();
     void stop();
     void setMetadataProbingPaused(bool visible);
-
 signals:
     void logMessage(const QString& message);
     void thumbnailReady(const QString& filePath);
     void metadataReady(const QString& filePath, const BPBS_AudioMetadata& info);
     void fileNotAudio(const QString& filePath);
     void p1FileReleased(const QString& filePath);
-
 private slots:
     void onDebounceTimeout();
-
 private:
     void cleanupThreads();
     void runMetadataProbeLoop();

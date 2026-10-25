@@ -19,10 +19,8 @@
 class BPBS_Decoder;
 class BPBS_FFT;
 class BPBS_Generator;
-
 class BPBS_Worker : public QObject, public QRunnable {
     Q_OBJECT
-
 public:
     using CalcParamsGetter = std::function<BPBS_CalcParams()>;
     using VisualParamsGetter = std::function<BPBS_VisualParams()>;
@@ -38,7 +36,6 @@ public:
                          QObject* parent = nullptr);
     ~BPBS_Worker() override = default;
     void run() override;
-
 signals:
     void thumbnailReady(const QString& filePath);
     void metadataReady(const QString& filePath, const BPBS_AudioMetadata& info);
@@ -46,7 +43,6 @@ signals:
     void p1FileReleased(const QString& filePath);
     void logMessage(const QString& msg);
     void bucketFinished(int bucketId, qint64 elapsedMs);
-
 private:
     void checkPause();
     bool processSingleFile(const BPBS_DemandItem& item,

@@ -49,7 +49,6 @@ public:
     void clearDomain(const QString& domainId);
     [[nodiscard]] int totalRecordsCount() const;
     [[nodiscard]] qint64 estimatedMemoryUsage() const;
-
 private:
     static void splitPath(const QString& fullPath, QString& outDomain, QString& outFileName);
     mutable std::shared_mutex m_mutex;

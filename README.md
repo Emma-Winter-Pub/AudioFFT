@@ -232,8 +232,6 @@ This project is designed as a portable application. Due to the severe fragmentat
 | **libwebp** | WebP image encoding | BSD 3-Clause |
 | **libavif / libaom**| AVIF / AV1 image encoding | BSD 2-Clause |
 | **libyuv** | Pixel format conversion & scaling | BSD 3-Clause |
-| **Qt-ADS** | Docking System | WTFPL |
-
 
 
 | Component | Author / Organization | License |

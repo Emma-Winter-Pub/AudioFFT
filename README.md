@@ -233,10 +233,13 @@ This project is designed as a portable application. Due to the severe fragmentat
 | **libavif / libaom**| AVIF / AV1 image encoding | BSD 2-Clause |
 | **libyuv** | Pixel format conversion & scaling | BSD 3-Clause |
 
-* **Matplotlib Perceptual Maps**: Stéfan van der Walt, Nathaniel Smith (BSD 2-Clause / CC0)
-* **Turbo Colormap**: Anton Mikhailov / Google LLC (Apache 2.0)
-* **Kindlmann Maps**: Gordon Kindlmann / Univ. of Chicago (BSD 2-Clause)
-* **Bent Cool Warm & Smooth Cool Warm**: Kenneth Moreland / Sandia National Laboratories (BSD 2-Clause)
-* **Scientific Colour Maps**: Dr. Fabio Crameri (CC BY 4.0)
-* **CET Perceptually Uniform Maps**: Peter Kovesi / CET UWA (CC BY 4.0)
-* **SciVisColor & ColorBrewer**: Francesca Samsel / Cynthia Brewer (CC BY 4.0 / Apache 2.0)
+
+| Component | Author / Organization | License |
+| :--- | :--- | :--- |
+| **Matplotlib Perceptual Maps** | Stéfan van der Walt, Nathaniel Smith | BSD 2-Clause / CC0 |
+| **Turbo Colormap** | Anton Mikhailov / Google LLC | Apache 2.0 |
+| **Kindlmann Maps** | Gordon Kindlmann / Univ. of Chicago | BSD 2-Clause |
+| **Bent Cool Warm & Smooth Cool Warm** | Kenneth Moreland / Sandia National Laboratories | BSD 2-Clause |
+| **Scientific Colour Maps** | Dr. Fabio Crameri | CC BY 4.0 |
+| **CET Perceptually Uniform Maps** | Peter Kovesi / CET UWA | CC BY 4.0 |
+| **SciVisColor & ColorBrewer** | Francesca Samsel / Cynthia Brewer | CC BY 4.0 / Apache 2.0 |
